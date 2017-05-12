@@ -4,13 +4,13 @@ namespace ZFMigrate\Controller;
 
 use Zend\ModuleManager\ModuleManager;
 use Zend\Mvc\Controller\AbstractActionController;
-use ZFMigrate\Model\MigrateTable;
+use ZFMigrate\Model\MigrateDbStorage;
 
 class DatabaseController extends AbstractActionController
 {
 
     /**
-     * @var MigrateTable
+     * @var MigrateDbStorage
      */
     private $table;
 
@@ -19,7 +19,7 @@ class DatabaseController extends AbstractActionController
      */
     private $moduleManager;
 
-    public function __construct(MigrateTable $table)
+    public function __construct(MigrateDbStorage $table)
     {
         $this->table = $table;
     }

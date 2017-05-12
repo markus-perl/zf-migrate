@@ -9,22 +9,22 @@ abstract class AbstractMigration
 {
 
     /**
-     * @var MigrateTable
+     * @var MigrateDbStorage
      */
     private $migrateTable;
 
     /**
-     * @return MigrateTable
+     * @return MigrateDbStorage
      */
-    public function getMigrateTable(): MigrateTable
+    public function getMigrateDbStorage(): MigrateDbStorage
     {
         return $this->migrateTable;
     }
 
     /**
-     * @param MigrateTable $migrateTable
+     * @param MigrateDbStorage $migrateTable
      */
-    public function setMigrateTable(MigrateTable $migrateTable)
+    public function setMigrateDbStorage(MigrateDbStorage $migrateTable)
     {
         $this->migrateTable = $migrateTable;
     }

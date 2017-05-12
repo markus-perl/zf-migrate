@@ -7,7 +7,7 @@ use Zend\Db\Sql\Select;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\ModuleManager\ModuleManager;
 
-class MigrateTable
+class MigrateDbStorage
 {
 
     /**
@@ -112,7 +112,7 @@ class MigrateTable
         foreach ($loadedModules as $module) {
             if ($module instanceof MigrateInterface) {
                 $migration = $module->getMigration();
-                $migration->setMigrateTable($this);
+                $migration->setMigrateDbStorage($this);
                 $migration->process();
             }
         }

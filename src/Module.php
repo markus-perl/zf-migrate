@@ -4,7 +4,7 @@ namespace ZFMigrate;
 
 use ZFMigrate\Controller\DatabaseController;
 use ZFMigrate\Model\MigrateInterface;
-use ZFMigrate\Model\MigrateTable;
+use ZFMigrate\Model\MigrateDbStorage;
 use Zend;
 use Zend\Console\Adapter\AdapterInterface as Console;
 use Zend\Db\ResultSet\ResultSet;
@@ -34,11 +34,11 @@ class Module implements ConfigProviderInterface, ConsoleUsageProviderInterface, 
     {
         return [
             'factories' => [
-                MigrateTable::class => function ($sm) {
+                MigrateDbStorage::class => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
                     $tableGateway = new TableGateway('migrate', $dbAdapter, null, $resultSetPrototype);
-                    $table = new MigrateTable($tableGateway, $sm->get('ModuleManager'));
+                    $table = new MigrateDbStorage($tableGateway, $sm->get('ModuleManager'));
                     return $table;
                 }
             ],
@@ -51,7 +51,7 @@ class Module implements ConfigProviderInterface, ConsoleUsageProviderInterface, 
             'factories' => [
                 DatabaseController::class => function ($container) {
                     return new DatabaseController(
-                        $container->get(MigrateTable::class)
+                        $container->get(MigrateDbStorage::class)
                     );
                 },
 
