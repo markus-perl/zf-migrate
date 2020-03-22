@@ -2,8 +2,8 @@
 
 namespace ZFMigrate\Controller;
 
-use Zend\ModuleManager\ModuleManager;
-use Zend\Mvc\Controller\AbstractActionController;
+use Laminas\ModuleManager\ModuleManager;
+use Laminas\Mvc\Controller\AbstractActionController;
 use ZFMigrate\Model\MigrateDbStorage;
 
 class DatabaseController extends AbstractActionController

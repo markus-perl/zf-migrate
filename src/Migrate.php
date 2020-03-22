@@ -2,8 +2,8 @@
 
 namespace ZFMigrate;
 
-use Zend\Db\Adapter\Adapter;
-use Zend\Db\Adapter\AdapterInterface;
+use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\AdapterInterface;
 
 class Migrate extends \ZFMigrate\Model\AbstractMigration
 {

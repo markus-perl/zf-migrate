@@ -2,16 +2,16 @@
 
 namespace ZFMigrate\Model;
 
-use Zend\Db\Adapter\Exception\InvalidQueryException;
-use Zend\Db\Sql\Select;
-use Zend\Db\TableGateway\TableGateway;
-use Zend\ModuleManager\ModuleManager;
+use Laminas\Db\Adapter\Exception\InvalidQueryException;
+use Laminas\Db\Sql\Select;
+use Laminas\Db\TableGateway\TableGateway;
+use Laminas\ModuleManager\ModuleManager;
 
 class MigrateDbStorage
 {
 
     /**
-     * @var \Zend\Db\TableGateway\TableGateway
+     * @var \Laminas\Db\TableGateway\TableGateway
      */
     protected $tableGateway;
 
@@ -108,7 +108,7 @@ class MigrateDbStorage
         $loadedModules = $this->moduleManager->getLoadedModules();
         $this->silent = $silent;
 
-        /* @var \Zend\ServiceManager\Di\Module $module */
+        /* @var \Laminas\ServiceManager\Di\Module $module */
         foreach ($loadedModules as $module) {
             if ($module instanceof MigrateInterface) {
                 $migration = $module->getMigration();

@@ -5,12 +5,12 @@ namespace ZFMigrate;
 use ZFMigrate\Controller\DatabaseController;
 use ZFMigrate\Model\MigrateInterface;
 use ZFMigrate\Model\MigrateDbStorage;
-use Zend;
-use Zend\Console\Adapter\AdapterInterface as Console;
-use Zend\Db\ResultSet\ResultSet;
-use Zend\Db\TableGateway\TableGateway;
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
+use Laminas;
+use Laminas\Console\Adapter\AdapterInterface as Console;
+use Laminas\Db\ResultSet\ResultSet;
+use Laminas\Db\TableGateway\TableGateway;
+use Laminas\ModuleManager\Feature\ConfigProviderInterface;
+use Laminas\ModuleManager\Feature\ConsoleUsageProviderInterface;
 
 class Module implements ConfigProviderInterface, ConsoleUsageProviderInterface, MigrateInterface
 {
@@ -35,7 +35,7 @@ class Module implements ConfigProviderInterface, ConsoleUsageProviderInterface, 
         return [
             'factories' => [
                 MigrateDbStorage::class => function ($sm) {
-                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $dbAdapter = $sm->get('Laminas\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
                     $tableGateway = new TableGateway('migrate', $dbAdapter, null, $resultSetPrototype);
                     $table = new MigrateDbStorage($tableGateway, $sm->get('ModuleManager'));
