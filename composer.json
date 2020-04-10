@@ -9,7 +9,7 @@
     ],
     "require": {
         "php": ">=7.0",
-        "Laminasframework/Laminas-mvc-console": "^1.1"
+        "laminas/Laminas-mvc-console": "^1.1"
     },
     "autoload": {
         "psr-4": {
